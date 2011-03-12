@@ -8,7 +8,7 @@ way as a starter for a larger/enterprise type functionality.  I like my starter 
 before I burn it down and build them up (so I can remember how they work).
 
 Before you can run the application, you must create the database schema and tables.  You can use one of the
-sql scripts (one has data in it, one creates empty tables) n the docs directory.
+sql scripts (one has data in it, one creates empty tables) in the docs directory.
 
 Something like this should work:
 
@@ -24,7 +24,7 @@ To build IDE project files, try:
 
 For questions, try me at jacob [@] jacobheric.com.
 
-youbrew-sencha
+youbrew-extjs
 |-- pom.xml
 |-- youbrew-parent
 	-- pom.xml
