@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/context
+	   	http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	<!-- Jackson ObjectMapper that can serialize and deserialize to and from JSON. -->
+	<bean id="jacksonObjectMapper"  class="com.jacobheric.youbrew.utils.json.JsonObjectMapper" />
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+
+        <property name="webBindingInitializer">
+        	<bean class="com.jacobheric.youbrew.utils.json.GlobalBindingInitializer"/>
+    	</property>
+
+        <property name="messageConverters">
+            <list>
+                <bean id="mappingJacksonHttpMessageConverter"
+                    class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                    <property name="objectMapper" ref="jacksonObjectMapper"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+	<!-- Forwards requests to the "/" resource to the default view -->
+	<mvc:view-controller path="/" view-name="index"/>
+
+	<!-- Application Message Bundle -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="/WEB-INF/messages/messages" />
+		<property name="cacheSeconds" value="0" />
+	</bean>
+
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!-- Configures Handler Interceptors -->
+	<mvc:interceptors>
+		<!-- Changes the locale when a 'locale' request parameter is sent; e.g. /?locale=de -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+
+	<!-- Saves a locale change using a cookie -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
+	<!--
+	     Content negotiating view resolver for spring-mvc jsp view handling.
+	-->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver" p:order="1">
+		<property name="viewResolvers">
+			<list>
+				<!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="2">
+					<property name="prefix" value="/WEB-INF/views/"/>
+					<property name="suffix" value=".jsp"/>
+				</bean>
+			</list>
+		</property>
+		<property name="defaultContentType" ref="textHTMLMediaType" />
+		<property name="ignoreAcceptHeader" value="true" />
+	</bean>
+
+    <bean id="textHTMLMediaType" class="org.springframework.http.MediaType">
+        <constructor-arg value="text" />
+        <constructor-arg value="html"/>
+    </bean>
+
+
+</beans>

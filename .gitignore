@@ -1,0 +1,14 @@
+#
+# using .gitignore to ignore idea, eclipse & build directories
+
+.classpath
+.DS_Store
+*.ipr
+*.iml
+*.iws
+.idea
+.project
+.settings
+target/
+*.log
+
