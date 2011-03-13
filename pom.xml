@@ -3,11 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jacobheric.youbrew-sencha</groupId>
-	<artifactId>youbrew-sencha</artifactId>
+	<groupId>com.jacobheric.youbrew-extjs</groupId>
+	<artifactId>youbrew-extjs</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Youbew-Sencha Application Parent Project</name>
+	<name>Youbew-ExtJS Application Parent Project</name>
 	<modules>
 		<module>youbrew-parent</module>
   </modules>

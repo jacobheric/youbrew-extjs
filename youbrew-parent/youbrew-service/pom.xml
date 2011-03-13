@@ -5,7 +5,7 @@
                              http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.jacobheric.youbrew-sencha</groupId>
+		<groupId>com.jacobheric.youbrew-extjs</groupId>
 		<artifactId>youbrew-parent</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
@@ -16,12 +16,12 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>com.jacobheric.youbrew-sencha</groupId>
+			<groupId>com.jacobheric.youbrew-extjs</groupId>
 			<artifactId>youbrew-persist</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.jacobheric.youbrew-sencha</groupId>
+			<groupId>com.jacobheric.youbrew-extjs</groupId>
 			<artifactId>youbrew-domain</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>

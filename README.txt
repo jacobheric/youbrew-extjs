@@ -12,7 +12,7 @@ sql scripts (one has data in it, one creates empty tables) in the docs directory
 
 Something like this should work:
 
-mysql> source /path-to-your-workspace/youbrew-sencha/doc/mysql_ddl_and_data.sql
+mysql> source /path-to-your-workspace/youbrew-extjs/doc/mysql_ddl_and_data.sql
 
 To build all modules and run the web application, do:
 1.  In root run:  mvn clean install
