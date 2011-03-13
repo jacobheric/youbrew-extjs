@@ -135,7 +135,7 @@ public abstract class BaseDAOImpl<T, ID extends Serializable> implements IBaseDA
 	}
 
     /**
-     * Use this inside subclasses as a convenience method.
+     * Convenience criteria method.
      */
     @SuppressWarnings("unchecked")
     protected List<T> findByCriteria(Criterion...criterion) {
