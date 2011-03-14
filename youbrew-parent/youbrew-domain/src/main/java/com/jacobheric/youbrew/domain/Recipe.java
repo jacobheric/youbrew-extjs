@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "recipe")
 public class Recipe implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	

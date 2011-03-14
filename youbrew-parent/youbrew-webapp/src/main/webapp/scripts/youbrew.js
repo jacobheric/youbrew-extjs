@@ -1,7 +1,7 @@
 /**
  *
- * 	 Example Application (You Brew) demonstrating a simple CRUD grid (in front of a
- *      pretty vanilla spring/hibernate/mysql/spring-mvc/restful/json webapp).
+ *	  Example Application (You Brew) demonstrating a simple CRUD grid (in front of a
+ *	  pretty vanilla spring/hibernate/mysql/spring-mvc/restful/json webapp).
  *
  *   Copyright (C) 2011  Jacob Heric
  *
@@ -81,7 +81,7 @@ var yeastStore = new Ext.data.JsonStore({
 	writer: null,
 	fields: [
 		{name: 'id'},
-        {name: 'description', type: 'string'},
+		{name: 'description', type: 'string'},
 		{name: 'name', type: 'string'},
 		{name: 'attenuation'},
 		{name: 'yeastName'}
@@ -108,21 +108,21 @@ Ext.data.DataProxy.addListener('exception', function(proxy, type, action, option
 });
 
 //renderer needed to display correct field when not editing combo (see API)
-Ext.util.Format.comboRenderer = function(combo){
-    return function(value){
-        var record = combo.findRecord(combo.valueField, value);
-        return record ? record.get(combo.displayField) : combo.valueNotFoundText;
-    }
+Ext.util.Format.comboRenderer = function(combo) {
+	return function(value) {
+		var record = combo.findRecord(combo.valueField, value);
+		return record ? record.get(combo.displayField) : combo.valueNotFoundText;
+	}
 }
 
-var textField =  new Ext.form.TextField();
+var textField = new Ext.form.TextField();
 
 // Grid-columns with meta-data from backend.
-var recipeColumns =  [
-    {header: "ID", width: 40, sortable: true, dataIndex: 'id'},
-    {header: "Name", width: 100, sortable: true, dataIndex: 'name', editor: textField},
-    {header: "Brew Notes", width: 180, sortable: true, dataIndex: 'brewNotes', editor: textField},
-    {header: "Taste Notes", width: 180, sortable: true, dataIndex: 'tasteNotes', editor: textField},
+var recipeColumns = [
+	{header: "ID", width: 40, sortable: true, dataIndex: 'id'},
+	{header: "Name", width: 100, sortable: true, dataIndex: 'name', editor: textField},
+	{header: "Brew Notes", width: 180, sortable: true, dataIndex: 'brewNotes', editor: textField},
+	{header: "Taste Notes", width: 180, sortable: true, dataIndex: 'tasteNotes', editor: textField},
 	{
 		header: 'Yeast',
 		width: 130,
@@ -144,49 +144,49 @@ var recipeColumns =  [
 				  if (value) {
 					  return value;
 				  }
-				  else{
+				  else {
 					  var yeast = record.get('yeast');
 					  return yeast ? yeast.name : '';
 				  }
 			  }
 	}
 	/* No date time picker in extjs, so leave for now.  
-    {header: "Brew Start", width: 120, sortable: true, dataIndex: 'start',  xtype:'datecolumn', format: 'M d, Y H:i:s', editor: textField},
-    {header: "Brew End", width: 120, sortable: true, dataIndex: 'end',  xtype:'datecolumn', format: 'M d, Y H:i:s', editor: textField}*/
+	 {header: "Brew Start", width: 120, sortable: true, dataIndex: 'start',  xtype:'datecolumn', format: 'M d, Y H:i:s', editor: textField},
+	 {header: "Brew End", width: 120, sortable: true, dataIndex: 'end',  xtype:'datecolumn', format: 'M d, Y H:i:s', editor: textField}*/
 ];
 
 Ext.onReady(function() {
-    Ext.QuickTips.init();
+	Ext.QuickTips.init();
 
-    // create recipe.Form instance (@see recipeForm.js)
-    var recipeForm = new youbrew.recipe.Form({
-        renderTo: 'recipe-form',
+	// create recipe.Form instance (@see recipeForm.js)
+	var recipeForm = new youbrew.recipe.Form({
+		renderTo: 'recipe-form',
 		yeastStore: this.yeastStore,
-        listeners: {
-            create : function(fpanel, data) {   // <-- custom "create" event defined in youbrew.recipe.Form class
-                var rec = new recipeGrid.store.recordType(data);
-                recipeGrid.store.insert(0, rec);
-            }
-        }
-    });
+		listeners: {
+			create : function(fpanel, data) {   // <-- custom "create" event defined in youbrew.recipe.Form class
+				var rec = new recipeGrid.store.recordType(data);
+				recipeGrid.store.insert(0, rec);
+			}
+		}
+	});
 
-    // create youbrew.recipe.Grid instance (@see recipeGrid.js)
-    var recipeGrid = new youbrew.recipe.Grid({
-        renderTo: 'recipe-grid',
-        store: store,
+	// create youbrew.recipe.Grid instance (@see recipeGrid.js)
+	var recipeGrid = new youbrew.recipe.Grid({
+		renderTo: 'recipe-grid',
+		store: store,
 		clicksToEdit: 'auto',
-        columns : recipeColumns,
-        listeners: {
-            rowclick: function(g, index, ev) {
-                var rec = g.store.getAt(index);
-                recipeForm.loadRecord(rec);
+		columns : recipeColumns,
+		listeners: {
+			rowclick: function(g, index, ev) {
+				var rec = g.store.getAt(index);
+				recipeForm.loadRecord(rec);
 				//
 				//Load the yeast display field
 				recipeForm.yeastCombo.setRawValue(rec.get('yeast') ? rec.get('yeast').name : null);
-            },
-            destroy : function() {
-                recipeForm.getForm().reset();
-            }
-        }
-    });
+			},
+			destroy : function() {
+				recipeForm.getForm().reset();
+			}
+		}
+	});
 });

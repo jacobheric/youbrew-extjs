@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "yeast")
 public class Yeast implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)	
