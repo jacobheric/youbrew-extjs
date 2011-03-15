@@ -26,6 +26,16 @@
 		<property name="initialSize" value="${dbcp.initialPoolSize}"/>
 		<property name="maxActive" value="${dbcp.maxActiveConnections}"/>
 		<property name="minIdle" value="${dbcp.minIdleConnections}"/>
+		<property name="removeAbandoned" value="${dbcp.removeAbandoned}"/>
+		<property name="removeAbandonedTimeout" value="${dbcp.removeAbandonedTimeout}"/>
+		<property name="logAbandoned" value="${dbcp.logAbandoned}"/>
+		<property name="testOnBorrow" value="${dbcp.testOnBorrow}"/>
+		<property name="testOnReturn" value="${dbcp.testOnReturn}"/>
+		<property name="minEvictableIdleTimeMillis" value="${dbcp.minEvictableIdleTimeMillis}"/>
+		<property name="timeBetweenEvictionRunsMillis" value="${dbcp.timeBetweenEvictionRunsMillis}"/>
+		<property name="numTestsPerEvictionRun" value="${dbcp.numTestsPerEvictionRun}"/>
+		<property name="testWhileIdle" value="${dbcp.testWhileIdle}"/>
+		<property name="validationQuery" value="${dbcp.validationQuery}"/>
 	</bean>
 
 	<bean id="sessionFactory"
