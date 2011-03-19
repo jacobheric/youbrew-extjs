@@ -121,8 +121,8 @@ ENGINE = InnoDB
 COMMENT = 'Joins hops to recipes';
 
 
-CREATE USER 'youbrew_user'@'localhost' IDENTIFIED BY 'somethinggood';
-GRANT ALL PRIVILEGES ON youbrew.* TO 'youbrew_user'@'%' WITH GRANT OPTION;
+CREATE USER 'youbrew_user'@'localhost' IDENTIFIED BY 'youbrew_pass';
+GRANT ALL PRIVILEGES ON youbrew.* TO 'youbrew_user'@'localhost' WITH GRANT OPTION;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
