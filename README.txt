@@ -17,6 +17,7 @@ mysql> source /path-to-your-workspace/youbrew-extjs/doc/mysql_ddl_and_data.sql
 To build all modules and run the web application, do:
 1.  In root run:  mvn clean install
 2.  In youbrew-webapp, run: mvn jetty:run
+3.  Goto:  http://localhost:8080/youbrew-extjs
 
 To build IDE project files, try:
 * For Eclipse: mvn eclipse:eclipse
