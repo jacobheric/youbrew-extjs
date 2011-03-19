@@ -200,4 +200,4 @@ UNLOCK TABLES;
 -- Dump completed on 2011-03-12 14:23:08
 
 CREATE USER 'youbrew_user'@'localhost' IDENTIFIED BY 'youbrew_pass';
-GRANT ALL PRIVILEGES ON youbrew.* TO 'youbrew_user'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON youbrew.* TO 'youbrew_user'@'localhost' WITH GRANT OPTION;
