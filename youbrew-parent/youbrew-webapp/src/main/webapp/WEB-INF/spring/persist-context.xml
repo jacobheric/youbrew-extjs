@@ -51,6 +51,10 @@
 	         <prop key="hibernate.dialect">${hibernate.mysql.dialect}</prop>
 	         <prop key="hibernate.show_sql">${hibernate.showSql}</prop>
 	         <prop key="hibernate.format_sql">${hibernate.formatSql}</prop>
+            <!-- You can probably use this to create your schema -->
+            <!--
+            <prop key="hibernate.hbm2ddl.auto">create</prop>
+            -->  			  
 	      </props>
 	   </property>
 	</bean>
