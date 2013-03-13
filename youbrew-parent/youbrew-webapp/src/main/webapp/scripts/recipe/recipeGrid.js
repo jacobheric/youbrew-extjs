@@ -47,6 +47,9 @@ youbrew.recipe.Grid = Ext.extend(Ext.grid.EditorGridPanel, {
         this.bbar = this.buildBottomToolbar();
         this.buttons = this.buildUI();
 
+        this.on("applyFilterClick", this.onApplyFilter, this);
+        this.on("resetFilterClick", this.onResetFilter, this);
+
         // super
         youbrew.recipe.Grid.superclass.initComponent.call(this);
     },
@@ -64,7 +67,15 @@ youbrew.recipe.Grid = Ext.extend(Ext.grid.EditorGridPanel, {
 			emptyText: 'Search Any Field',
 			allowBlank: true,
 			selectOnFocus : true,
-			width: 200
+			width: 200,
+            bubbleEvents:['applyFilterClick'],
+            listeners:{
+                specialkey:function (field, e) {
+                    if (e.getKey() == e.ENTER) {
+                        this.fireEvent("applyFilterClick");
+                    }
+                }
+            }
 		},
 		'-',
 		{
@@ -72,7 +83,9 @@ youbrew.recipe.Grid = Ext.extend(Ext.grid.EditorGridPanel, {
 			tooltip: 'Apply current search filter',
 			iconCls: 'silk-accept',
 			scope: this,
-			handler: this.onApplyFilter
+            handler:function () {
+                this.fireEvent("applyFilterClick");
+            }
 		},
 		'-',
 		{
@@ -80,7 +93,9 @@ youbrew.recipe.Grid = Ext.extend(Ext.grid.EditorGridPanel, {
 			tooltip: 'Reset to default search filters',
 			iconCls: 'silk-cancel',
 			scope: this,
-			handler: this.onResetFilter
+            handler:function () {
+                this.fireEvent("resetFilterClick");
+            }
 		},
 		{
 			xtype: "tbfill"
@@ -151,6 +166,7 @@ youbrew.recipe.Grid = Ext.extend(Ext.grid.EditorGridPanel, {
      */
     onResetFilter : function(btn, ev) {
 		this.filterField.reset();
+        this.onApplyFilter();
     },
 
 
@@ -195,5 +211,9 @@ youbrew.recipe.Grid = Ext.extend(Ext.grid.EditorGridPanel, {
 
 			});
 		}
+        else {
+            this.store.remove(rec);
+            this.store.save();
+        }
     }
 });

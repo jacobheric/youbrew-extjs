@@ -121,7 +121,7 @@ ENGINE = InnoDB
 COMMENT = 'Joins hops to recipes';
 
 
-CREATE USER 'youbrew_user'@'localhost' IDENTIFIED BY 'youbrew_pass';
+CREATE USER 'youbrew_user'@'localhost' IDENTIFIED BY 'somethinggood';
 GRANT ALL PRIVILEGES ON youbrew.* TO 'youbrew_user'@'localhost' WITH GRANT OPTION;
 
 

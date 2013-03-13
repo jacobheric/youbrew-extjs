@@ -66,7 +66,7 @@ public class RecipeDAOImpl extends BaseDAOImpl<Recipe, Long> implements IRecipeD
 		}
 
 		//
-		//Determine the total before limiting (useful of paging
+		//Determine the total before limiting (useful for paging)
 		c.setProjection(Projections.rowCount());
 		recipeCriteria.setTotal(((Integer) c.uniqueResult()).intValue());
 		c.setProjection(null);
